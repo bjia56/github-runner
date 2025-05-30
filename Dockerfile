@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM arm64v8/ubuntu:24.04
 
 ARG RUNNER_VERSION="2.294.0"
 
@@ -11,8 +11,8 @@ RUN apt install -y --no-install-recommends \
 
 
 RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
-    && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-    && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+    && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz \
+    && tar xzf ./actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz
 
 RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
 
