@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $$ > /tmp/runner.pid
+
 REPOSITORY=$REPO
 ACCESS_TOKEN=$TOKEN
 

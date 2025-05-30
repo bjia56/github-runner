@@ -21,12 +21,16 @@ RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
 RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
 
 COPY start.sh start.sh
+COPY stop.sh stop.sh
 
 # make the script executable
 RUN chmod +x start.sh
+RUN chmod +x stop.sh
 
 # since the config and run script for actions are not allowed to be run by root,
 # set the user to "docker" so all subsequent commands are run as the docker user
 USER docker
 
-ENTRYPOINT ["./start.sh"]
+ENV ACTIONS_RUNNER_HOOK_JOB_COMPLETED=/stop.sh
+
+ENTRYPOINT ["/start.sh"]
