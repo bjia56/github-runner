@@ -1,6 +1,6 @@
 FROM arm64v8/ubuntu:24.04
 
-ARG RUNNER_VERSION="2.294.0"
+ARG RUNNER_VERSION="2.324.0"
 
 # Prevents installdependencies.sh from prompting the user and blocking the image creation
 ARG DEBIAN_FRONTEND=noninteractive
