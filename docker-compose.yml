@@ -1,0 +1,13 @@
+services:
+  runner:
+    image: ghcr.io/bjia56/github-runner:main
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
