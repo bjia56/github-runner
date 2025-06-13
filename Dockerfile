@@ -28,6 +28,6 @@ RUN chmod +x start.sh
 # set the user to "docker" so all subsequent commands are run as the docker user
 USER docker
 
-ENV PATH "~/.local/bin:$PATH"
+ENV PATH="~/.local/bin:$PATH"
 
 ENTRYPOINT ["/start.sh"]
