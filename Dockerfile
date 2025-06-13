@@ -1,6 +1,6 @@
 FROM arm64v8/ubuntu:24.04
 
-ARG RUNNER_VERSION="2.324.0"
+ARG RUNNER_VERSION="2.325.0"
 
 # Prevents installdependencies.sh from prompting the user and blocking the image creation
 ARG DEBIAN_FRONTEND=noninteractive
@@ -27,5 +27,7 @@ RUN chmod +x start.sh
 # since the config and run script for actions are not allowed to be run by root,
 # set the user to "docker" so all subsequent commands are run as the docker user
 USER docker
+
+ENV PATH "~/.local/bin:$PATH"
 
 ENTRYPOINT ["/start.sh"]
