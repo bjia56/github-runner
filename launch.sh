@@ -1,16 +1,24 @@
 #!/bin/bash
 
-CONTAINER=$1
+function looper () {
+  REPO=$1
 
-while true; do
-  # Start the service in detached mode
-  docker compose up --force-recreate -d $CONTAINER
+  while true; do
+    # Start the service in detached mode
+    docker compose up --force-recreate -d $REPO
 
-  # Wait for the container to exit
-  container_id=$(docker compose ps -q $CONTAINER)
-  echo "Waiting for $CONTAINER..."
-  docker wait "$container_id"
+    # Wait for the container to exit
+    container_id=$(docker compose ps -q $REPO)
+    echo "Waiting for $REPO container..."
+    docker wait "$container_id"
 
-  echo "$CONTAINER exited. Recreating..."
-  sleep 5
+    echo "Container exited. Recreating..."
+    sleep 5
+  done
+}
+
+for service in $(docker compose config --services); do
+  looper "$service" &
 done
+
+wait
