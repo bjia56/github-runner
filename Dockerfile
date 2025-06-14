@@ -9,7 +9,7 @@ RUN apt update -y && apt upgrade -y && \
     apt install -y --no-install-recommends \
     curl wget jq build-essential libssl-dev libffi-dev \
     python3 python3-venv python3-dev python3-pip libicu74 \
-    nodejs sudo adduser
+    nodejs git sudo adduser
 
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
